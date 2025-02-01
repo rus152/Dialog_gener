@@ -9,11 +9,10 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def generate_response(prompt):
     response = openai.ChatCompletion.create(
-        model="gpt-4o",
+        model="o3-mini",
         messages=[
-            {"role": "system", "content": prompt}
-        ],
-        max_tokens=3000
+            {"role": "user", "content": prompt}
+        ]
     )
     result = response.choices[0].message['content'].strip()
     # Удаление пустых строк
